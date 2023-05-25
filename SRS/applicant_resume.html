@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Applicant Resume</title>
+    <link rel="shortcut icon" type="image/x-icon" href="mainlogo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            display: grid;
+            height: 100%;
+            place-items: center;
+            text-align: center;
+        }
+
+        .container {
+            height: 500px;
+            width: 500px;
+            position: relative;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 8px 8px 20px rgb(128, 128, 128);
+            overflow: hidden;
+            margin: auto;
+            padding: auto;
+            text-align: center;
+            margin-top: -10px;
+        }
+
+        .container .wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px dashed #c2cdda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .wrapper.active {
+            border: none;
+        }
+
+        .wrapper .image {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .wrapper .icon {
+            font-size: 100px;
+            color: #5cafef;
+              
+        }
+
+        .wrapper .text {
+            font-size: 20px;
+            font-weight: 500;
+            color: #5B5B7B;
+        }
+
+        .wrapper #cancel-btn i {
+            position: absolute;
+            font-size: 20px;
+            right: 15px;
+            top: 15px;
+            color: #67b6f2;
+            cursor: pointer;
+            display: none;
+        }
+
+        .wrapper.active:hover #cancel-btn i {
+            display: block;
+        }
+
+        .wrapper #cancel-btn i:hover {
+            color: #e74c3c;
+        }
+
+        .wrapper .file-name {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            padding: 8px 0;
+            font-size: 18px;
+            color: #fff;
+            display: none;
+            background: linear-gradient(to right,
+                    rgb(110, 209, 255),
+                    rgb(91, 94, 255));
+        }
+
+        .wrapper.active:hover .file-name {
+            display: block;
+        }
+
+        .container #custom-btn {
+            margin-top: 30px;
+            display: block;
+            width: 60%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: linear-gradient(to right,
+                    rgb(110, 209, 255),
+                    rgb(91, 94, 255));
+            margin-left: 95px;
+        }
+        #custom-btn2{
+            margin-top: 30px;
+            display: block;
+            width: 60%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: linear-gradient(to right,
+                    rgb(110, 209, 255),
+                    rgb(91, 94, 255));
+            margin-left: 95px;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 70px;
+            margin-top: 30px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        /* #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        } */
+        h3{
+            color: #5cafef;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- <img src="serslogo.png" id="logo" alt="logo"> -->
+        <h3 class="title">Applicant Resume</h3>
+    </header>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="text">
+                    No file chosen, yet!
+                </div>
+            </div>
+            <div id="cancel-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="file-name">
+                File name here
+            </div>
+        </div>
+        <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+        
+        <button id="custom-btn2">Submit Resume</button>
+        
+        <input id="default-btn" type="file" hidden>
+    </div>
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const fileName = document.querySelector(".file-name");
+        const defaultBtn = document.querySelector("#default-btn");
+        const customBtn = document.querySelector("#custom-btn");
+        // const customBtn2 = document.querySelector("#custom-btn2");
+        const cancelBtn = document.querySelector("#cancel-btn i");
+        const img = document.querySelector("img");
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+        function defaultBtnActive() {
+            defaultBtn.click();
+        }
+        defaultBtn.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const result = reader.result;
+                    img.src = result;
+                    wrapper.classList.add("active");
+                }
+                cancelBtn.addEventListener("click", function () {
+                    img.src = "";
+                    wrapper.classList.remove("active");
+                })
+                reader.readAsDataURL(file);
+            }
+            if (this.value) {
+                let valueStore = this.value.match(regExp);
+                fileName.textContent = valueStore;
+            }
+        });
+    </script>
+</body>
+
+</html>
